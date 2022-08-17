@@ -24,7 +24,7 @@
     <br><br>
     Mobile Number: <input type="text" name="mobile" >
     <br><br>
-    Home Number: <input type="text" name="home_number" >
+    Home number: <input type="text" name="home_number" >
     <br><br>
      <button type="submit">new</button>
 </form>

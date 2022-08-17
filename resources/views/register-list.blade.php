@@ -27,10 +27,10 @@ list
             <td>{{$b->home_number}}</td>
             <td>  <form method="POST" action="{{"delete/".$b->id}}">
                         {{csrf_field()}}
-                @method('DELETE')
-                <button type="submit">
-                    Delete</button>
-                </form>              </td>
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                </form>
+            </td>
             <td><a href="edit/{{$b->id}}">edit</a></td>
 
         </tr>
