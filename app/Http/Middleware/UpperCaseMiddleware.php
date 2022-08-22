@@ -21,13 +21,25 @@ class UpperCaseMiddleware
 
         if($request->mobile=="09126145705"){
             $request['name']='alireza';
+            $request['family']='Heydari';
+            $request['website']='cloudkade.com';
+            $request['email']='persian24@gmail.com';
+            $request['home_number']='none';
+            $request['date']='1368';
         }
         if($request->mobile=="09131139909"){
-            $request['name']='mohammad';
+            $request['name']='Mohammad Hosein';
+            $request['family']='Masjedi';
+            $request['website']='livenegah.com';
+            $request['email']='masjedi2004@gmail.com';
+            $request['home_number']='021-77455841';
+            $request['date']='1358';
         }
 //        dd($request->all());
-        $request['name']= strtoupper($request->name." ");
-
+//        $request['name']= strtoupper($request->name." ");
+//        $request['family']= strtoupper($request->family." ");
+//        $request['website']= strtoupper($request->website." ");
+//        $request['email']= strtoupper($request->email." ");
         return $next($request);
     }
 }

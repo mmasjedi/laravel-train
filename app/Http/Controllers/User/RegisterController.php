@@ -23,17 +23,18 @@ class RegisterController extends Controller
         return view('register');
     }
 
-    public function id(\Illuminate\Http\Request $request)
-    {
-//      "name" => $request->name;
-//      "family" => $request->family;
-        return view('register');
-        //return $request->all();
-    }
 
 
     public function create(Request $request)
     {
+        if($request->name==null || $request->family==null || $request->mobile==null) {
+
+
+            return back()->withErrors(['msg' => 'فیلد های نام ، فامیل و موبایل اجباری است ']);
+
+        }
+
+        else
 
         DB::table("users")->insert(
             [
@@ -43,31 +44,42 @@ class RegisterController extends Controller
                 "email" => $request->email,
                 "website" => $request->website,
                 "home_number" => $request->home_number,
+                "date" => $request->date
+
+
+
+
             ]
         );
-        return back();
+        return redirect('register/register-list');
+
+        //        return back();
 //        return view('home2',compact('request'));
     }
 
     public function update($id, Request $request)
     {
+        if($request->name==null || $request->family==null || $request->mobile==null) {
 
 
-        DB::table("users")->where("id", '=', $id)
-            ->update([
-        'name' => $request->name,
-        'family' => $request->family,
-        'mobile' => $request->mobile,
-        'website' => $request->website,
-        'email' => $request->email,
-        'home_number' => $request->home_number
-        ]);
+            return back()->withErrors(['msg' => 'please insert name']);
 
+        }
+//        if($request->family==null)
+//            return redirect('/edit/'. $id);
 
+        else
+            DB::table("users")->where("id", '=', $id)
+                ->update([
+                    'name' => $request->name,
+                    'family' => $request->family,
+                    'mobile' => $request->mobile,
+                    'website' => $request->website,
+                    'email' => $request->email,
+                    'home_number' => $request->home_number
+                ]);
 
-
-
-        return redirect('/register-list');
+        return redirect('register/register-list');
     }
 
     public function edit($id)
@@ -82,7 +94,7 @@ class RegisterController extends Controller
 
         DB::table("users")->where("id", '=', $id)
             ->delete();
-        return redirect('/register-list');
+        return redirect('register/register-list');
     }
 
 

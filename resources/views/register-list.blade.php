@@ -36,12 +36,9 @@ list
         </tr>
         @endforeach
 
-
 </table>
 
-
-
-
+<td><a href="register">new</a></td>
 
 </body>
 </html>
